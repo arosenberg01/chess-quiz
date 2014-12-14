@@ -1,0 +1,40 @@
+body {
+	background-image: url('http://i.imgur.com/j0lxtek.jpg');
+	background-repeat: ;
+	background-size: cover;
+}
+
+#currentQ {
+	font-size: 2em;
+}
+
+#answers {
+	margin-top: 3em;
+}
+
+
+form[name="quizForm"] {
+	
+	margin-top: 10%;
+	color: #fff;
+	background-color: #681A04;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 50%;
+	min-height: 500px;
+	border-radius: 25px;
+	box-shadow: 10px 10px 5px #727272;
+}
+
+input[type="submit"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em;
+}
+
+/*input[type="radio"] {
+	margin-left: auto;
+	margin-right: auto;
+}
+*/
