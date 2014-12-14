@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	var questionNum = 0;
+	var numCorrect = 0;
 
 	var questions = [  
 		{question: "Chess is often called the \'game of...\'", 
@@ -16,20 +17,32 @@ $(document).ready(function() {
 
 	$('#submitButton').on('click', function(e) {
 		e.preventDefault();
-		nextQuestion();
-		
+		if (questionNum < 4)	{
+			nextQuestion();
+		} else {
+			$('#feedback h2').text(numCorrect - 1 + " out of 4");
+		}
 	});  
 		
-		
+
 		
 	function nextQuestion() {
 
 		var checkedId = $("input[type='radio']:checked").attr('id');
 		var submittedAnswer = $("label[for='" + checkedId + "']").html();
 		
-		submittedAnswer === correctAnswers[questionNum] ? console.log("Correct") : console.log("Incorrect");
+		if (submittedAnswer === correctAnswers[questionNum]) {
+			numCorrect++;
+			$('#feedback h2').text("Correct");
+		} else {
+			$('#feedback h2').text("Incorrect");
+		}
 
-		console.log(submittedAnswer + "----" + correctAnswers[questionNum]);
+		// submittedAnswer === correctAnswers[questionNum] ? console.log("Correct") : console.log("Incorrect");
+
+		// console.log(submittedAnswer + "----" + correctAnswers[questionNum]);
+
+		$('input[type="radio"]').prop('checked', false);
 
 		$('#currentQ').html(questions[questionNum].question)
 
