@@ -18,21 +18,25 @@ $(document).ready(function() {
 		start();
 	});
 
-	$('#submitButton').on('click', function(e) {
+	
+	$('#submit-btn').on('click', function(e) {
 		e.preventDefault();
 		nextQuestion();
-	});  
-		
+	});
+
 	function start() {
 		questionNum = 0;
 		numCorrect = 0;
 		$('#currentQ').show();
 		$('#answers').show();
-		$('#submitButton').css('display', 'block')
-
+		$('#feedback h2').css("text-align", "left");
+		$('#feedback h2').css("padding-left", "1em");
+		$('#feedback h2').text("Question " + parseInt(questionNum + 1) + "/4");
+		$('#submit-btn').css('display', 'block');
+		$('ul').empty();
 		$('#currentQ').html(questions[questionNum].question)
 
-		for (var k = 0; k < 4; k++) {
+		for (var k = 0; k < questions.length; k++) {
 			$("label[for='" + String.fromCharCode(97 + k) + "']").text(questions[questionNum].answers[0 + k]);
 		}
 	}
@@ -44,10 +48,13 @@ $(document).ready(function() {
 		
 		if (submittedAnswer === correctAnswers[questionNum]) {
 			numCorrect++;
-			$('#feedback h2').text("Correct");
+			$('#feedback h2').text("Question " + parseInt(questionNum + 2) + "/4");
 			$('#answers').animate()
+			$('ul').append('<li>' + '&#x2713' + '</li>')
 		} else {
-			$('#feedback h2').text("Incorrect");
+			$('#feedback h2').text("Question " + parseInt(questionNum + 2) + "/4");
+			$('ul').append('<li>' + '&#x2717' + '</li>')
+			
 		}
 
 		console.log(submittedAnswer + "----" + correctAnswers[questionNum] + "----" + numCorrect);
@@ -59,15 +66,15 @@ $(document).ready(function() {
 		if (questionNum < 4)	{
 			$('#currentQ').html(questions[questionNum].question)
 
-			for (var i = 0; i < 4; i++) {
+			for (var i = 0; i < questions.length; i++) {
 			$("label[for='" + String.fromCharCode(97 + i) + "']").text(questions[questionNum].answers[0 + i]);
 			}
 
 		} else {
-			$('#feedback h2').text(numCorrect + " out of 4");
-			$('#currentQ').hide();
+			$('#feedback h2').text("You got " + numCorrect + " out of 4");
+			$('#currentQ').text("Try again?");
 			$('#answers').hide();
-			$('#submitButton').hide();
+			$('#submit-btn').hide();
 			$('#startQuiz').show();
 		}
 
