@@ -5,19 +5,35 @@ body {
 }
 
 #currentQ {
-	font-size: 2em;
+	font-size: 3em;
+	display: none;
+	text-align: center;
+
 }
 
 #answers {
 	margin-top: 3em;
+	display: none;
+	text-align: center;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 15px;
+	padding: 1em 0;
+	width: 90%;
+	
+	margin-left: auto;
+	margin-right: auto;
+	/*padding-left: -20%;
+	padding-right: -20%;*/
 }
+
 
 
 form[name="quizForm"] {
 	
 	margin-top: 10%;
-	color: #fff;
-	background-color: #5c412d;
+	color: #eeeed2;
+	background-color: #6a943f;
 	margin-left: auto;
 	margin-right: auto;
 	max-width: 50%;
@@ -26,8 +42,14 @@ form[name="quizForm"] {
 	box-shadow: 10px 10px 5px #727272;
 }
 
-input[type="submit"] {
-	display: block;
+#submitButton {
+	display: none;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em;
+}
+
+#startQuiz {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 2em;
@@ -38,4 +60,17 @@ input[type="submit"] {
 	
 	padding: 2em;
 	background-color: black;
+}
+
+input[type="radio"] {
+	margin-left: 2em;
+}
+
+label {
+	font-size: 1.5em;
+}
+
+p {
+	display: inline;
+	white-space: nowrap;
 }
